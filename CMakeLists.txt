@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(src)
 
 add_executable(NOAM_RayTracer
-        src/Test.h)
+        src/Test.h
+        src/Test.cpp)
