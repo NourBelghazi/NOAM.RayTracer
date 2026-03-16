@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(NOAM_RayTracer
         src/main.cpp
-        src/Point.cpp)
+        include/Vec3.h
+)
 
 target_include_directories(NOAM_RayTracer PUBLIC include)
 
