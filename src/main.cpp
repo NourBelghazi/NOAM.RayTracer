@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "Vec3.h"
 
 int main() {
     int width = 256;
@@ -15,6 +16,7 @@ int main() {
     ofs <<"\n255\n";
 
     for (int i = 0; i<height; i++) {
+
         for (int j = 0; j<width; j++) {
             auto r = double(j)/(width-1);
             auto b = double(i)/(height-1);
@@ -27,5 +29,8 @@ int main() {
         }
     }
     ofs.close();
+    std::clog << "\rDone.                 \n";
+    Vec3 v(1,3,4);
+    std::cout<<v;
 
 }
