@@ -5,7 +5,7 @@ int main() {
     int width = 256;
     int height = 256;
 
-    std::ofstream ofs("../image/test.ppm");
+    std::ofstream ofs("../image/image.ppm");
 
     if (!ofs) {
         std::cout<<"Ne trouve pas";
