@@ -3,8 +3,10 @@ project(NOAM_RayTracer)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(src)
-
 add_executable(NOAM_RayTracer
-        src/Test.h
-        src/Test.cpp)
+        src/main.cpp
+        src/Point.cpp)
+
+target_include_directories(NOAM_RayTracer PUBLIC include)
+
+
