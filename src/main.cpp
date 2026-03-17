@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "Vec3.h"
-
+#include "Color.h"
+using Color = Vec3;
 int main() {
     int width = 256;
     int height = 256;
@@ -16,21 +17,17 @@ int main() {
     ofs <<"\n255\n";
 
     for (int i = 0; i<height; i++) {
+        double normalisedI = double(i) / (height - 1);
 
         for (int j = 0; j<width; j++) {
-            auto r = double(j)/(width-1);
-            auto b = double(i)/(height-1);
-
-            int ir = r*255.9999;
-            int ig = 0;
-            int ib = b*255.9999;
-
-            ofs<< ir <<' '<< ig << ' ' << ib << "\n";
+            double normalisedJ = double(j) / (width - 1);
+            Color color(normalisedI,0,normalisedJ);
+            write_color(ofs, color);
         }
     }
     ofs.close();
     std::clog << "\rDone.                 \n";
-    Vec3 v(1,3,4);
-    std::cout<<v;
+
+
 
 }

@@ -1,7 +1,6 @@
 #ifndef NOAM_RAYTRACER_VEC3_H
 #define NOAM_RAYTRACER_VEC3_H
 #include <cmath>
-#include <fstream>
 
 class Vec3 {
 public :
