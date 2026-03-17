@@ -7,6 +7,8 @@ add_executable(NOAM_RayTracer
         src/main.cpp
         include/Vec3.h
         include/Color.h
+        src/Ray.cpp
+        include/Ray.h
 )
 
 target_include_directories(NOAM_RayTracer PUBLIC include)
