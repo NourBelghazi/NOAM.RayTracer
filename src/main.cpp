@@ -17,10 +17,10 @@ int main() {
     ofs <<"\n255\n";
 
     for (int i = 0; i<height; i++) {
-        double normalisedI = i/(height-1);
+        double normalisedI = double(i) / (height - 1);
 
         for (int j = 0; j<width; j++) {
-            double normalisedJ = j/(width-1);
+            double normalisedJ = double(j) / (width - 1);
             Color color(normalisedI,0,normalisedJ);
             write_color(ofs, color);
         }
