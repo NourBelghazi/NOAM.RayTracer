@@ -20,13 +20,14 @@ double hit_sphere(const Ray& ray, const Sphere& sphere) {
     double a = dot(directionRay,directionRay);
     double b = dot(-2*directionRay, vectorOriginToCenter);
     double c = dot(vectorOriginToCenter,vectorOriginToCenter)-r*r;
+    double h = b/2;
 
-    double discriminant = b*b-4*a*c;
+    double discriminant = h*h-a*c;
     if (discriminant < 0) {
         return -1.0;
     }
     else {
-        return (-b - std::sqrt(discriminant) ) / (2.0*a);
+        return (-h - std::sqrt(discriminant) ) / a;
     }
 
 }
