@@ -98,11 +98,11 @@ inline Vec3 operator/(const Vec3& vector, double denominator) {
     vectorDivided/=denominator;
     return vectorDivided;
 }
-inline Vec3 dot(const Vec3& vector1, const Vec3& vector2) {
-    Vec3 vectorDot;
-    vectorDot.e[0]= vector1.getX()*vector2.getX();
-    vectorDot.e[1]= vector1.getY()*vector2.getY();
-    vectorDot.e[2]= vector1.getZ()*vector2.getZ();
+inline double dot(const Vec3& vector1, const Vec3& vector2) {
+    double vectorDot = 0;
+    vectorDot+= vector1.getX()*vector2.getX();
+    vectorDot+= vector1.getY()*vector2.getY();
+    vectorDot+= vector1.getZ()*vector2.getZ();
 
     return vectorDot;
 }

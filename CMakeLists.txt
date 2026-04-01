@@ -9,6 +9,7 @@ add_executable(main
         include/Color.h
         src/Ray.cpp
         include/Ray.h
+        include/Sphere.h
 )
 
 target_include_directories(main PUBLIC include)
