@@ -2,6 +2,7 @@
 #ifndef NOAM_RAYTRACER_COLOR_H
 #define NOAM_RAYTRACER_COLOR_H
 #include "Vec3.h"
+#include "Color.h"
 #include <iostream>
 
 using Color = Vec3;
