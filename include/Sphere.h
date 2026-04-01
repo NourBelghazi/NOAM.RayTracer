@@ -13,7 +13,7 @@ public:
         double m_rayon;
         Point m_centre;
 
-        Sphere(double p_rayon, Point p_centre):m_rayon(p_rayon),m_centre(p_centre){}
+        Sphere(double p_rayon, Point p_centre): m_rayon(p_rayon),m_centre(p_centre) {}
 
 };
 

@@ -7,12 +7,13 @@
 #include <cmath>
 
 using Color = Vec3;
-bool hit_sphere(const Ray& ray, const Sphere& sphere) {
+double hit_sphere(const Ray& ray, const Sphere& sphere) {
     Vec3 directionRay = ray.m_direction;
     Point originRay = ray.m_origin;
 
     Vec3 centre = sphere.m_centre;
     double r = sphere.m_rayon;
+
 
     Vec3 vectorOriginToCenter = centre-originRay;
 
@@ -20,26 +21,30 @@ bool hit_sphere(const Ray& ray, const Sphere& sphere) {
     double b = dot(-2*directionRay, vectorOriginToCenter);
     double c = dot(vectorOriginToCenter,vectorOriginToCenter)-r*r;
 
-    bool hit_sphere = (b*b-4*a*c>-1);
-    if (hit_sphere){return true;}
-    return false;
-}
-Color ray_color(const Ray& ray) {
-    auto direction = ray.m_direction;
-
-    double r = 15;
-    Point centre(10,0,30);
-
-    Sphere sphere(r,centre);
-
-    Vec3 unit_direction = direction.unit_vector();
-    double a;
-    a = 0.5*(unit_direction.getY() + 1.0);
-
-    if (hit_sphere(ray,sphere)) {
-        return Color(1,0,0);
+    double discriminant = b*b-4*a*c;
+    if (discriminant < 0) {
+        return -1.0;
     }
     else {
+        return (-b - std::sqrt(discriminant) ) / (2.0*a);
+    }
+
+}
+Color ray_color(const Ray& ray) {
+
+    Vec3 centre(0,0,-1);
+    auto t = hit_sphere(ray, Sphere(0.5,centre));
+    if (t >=0.0) {
+        Vec3 norme = ray.position(t) - Vec3(0,0,-1);
+        Vec3 N = norme.unit_vector();
+
+        return 0.5*Color(N.getX()+1, N.getY()+1, N.getZ()+1);
+    }
+    else {
+        auto direction = ray.m_direction;
+        Vec3 unit_direction = direction.unit_vector();
+        auto a = 0.5*(unit_direction.getY() + 1.0);
+
         return (1.0-a)*Color(1.0, 1.0, 1.0) + a*Color(0.5, 0.7, 1.0);
     }
 
@@ -84,7 +89,6 @@ int main() {
             write_color(ofs, pixel_color);
         }
     }
-
 
 
 
