@@ -22,9 +22,9 @@ public :
     }
 
     Vec3& operator+=(const Vec3& vector) {
-        e[0] = vector.getX();
-        e[1] = vector.getY();
-        e[2] = vector.getZ();
+        e[0] += vector.getX();
+        e[1] += vector.getY();
+        e[2] += vector.getZ();
         return *this;
     }
     Vec3& operator-() {
@@ -47,14 +47,20 @@ public :
     }
     Vec3& operator/=(double denominator) {
 
-        return *this*=1/denominator;
+        return *this*=1.0/denominator;
     }
     double getLengh() {
         double lenghSquared = getX()*getX()+getY()*getY()+getZ()*getZ();
         return std::sqrt(lenghSquared);
     }
-    Vec3& unit_vector() {
-        return *this/=getLengh();
+    Vec3 unit_vector() {
+        double len = getLengh();
+
+        if (len < 1e-8) {
+            return Vec3(0,0,0);
+        }
+
+        return *this/=len;
     }
     double operator[](int i) const {
         return e[i];
@@ -63,6 +69,7 @@ public :
         return e[i];
     }
 };
+using Point = Vec3;
 inline std::ostream& operator<<(std::ostream& os, const Vec3& vector) {
     return os<<vector[0]<<' '<<vector[1]<<' '<<vector[2];
 }
@@ -91,11 +98,11 @@ inline Vec3 operator/(const Vec3& vector, double denominator) {
     vectorDivided/=denominator;
     return vectorDivided;
 }
-inline Vec3 dot(const Vec3& vector1, const Vec3& vector2) {
-    Vec3 vectorDot;
-    vectorDot.e[0]= vector1.getX()*vector2.getX();
-    vectorDot.e[1]= vector1.getY()*vector2.getY();
-    vectorDot.e[2]= vector1.getZ()*vector2.getZ();
+inline double dot(const Vec3& vector1, const Vec3& vector2) {
+    double vectorDot = 0;
+    vectorDot+= vector1.getX()*vector2.getX();
+    vectorDot+= vector1.getY()*vector2.getY();
+    vectorDot+= vector1.getZ()*vector2.getZ();
 
     return vectorDot;
 }

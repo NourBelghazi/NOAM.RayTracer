@@ -3,14 +3,15 @@ project(NOAM_RayTracer)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(NOAM_RayTracer
+add_executable(main
         src/main.cpp
         include/Vec3.h
         include/Color.h
         src/Ray.cpp
         include/Ray.h
+        include/Sphere.h
 )
 
-target_include_directories(NOAM_RayTracer PUBLIC include)
+target_include_directories(main PUBLIC include)
 
 
